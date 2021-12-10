@@ -1,0 +1,57 @@
+openapi: 3.0.0
+
+info:
+  version: 0.0.1
+  title: Example API
+  description: Example endpoints.
+
+tags:
+  - name: Example 
+    description: Everything examples.
+
+components:
+  schemas:
+
+    Example:
+      type: object
+      properties:
+        id: 
+          type: integer
+        name: 
+          type: string
+        type: 
+          type: string
+      required:
+        - id
+        - name
+        - type
+
+  examples:
+
+    Example:
+      value: |
+        {
+          "id": 1,
+          "name": "Example name",
+          "type": "Example"
+        }
+
+paths:
+
+  /example:
+    get:
+      tags:
+        - Example
+      description: Retrieve an example.
+      operationId: GetExample
+      responses:
+        '200':
+          description: Successfully returnd an example.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Example'
+              examples:
+                Example:
+                  $ref: "#/components/examples/Example"
+
